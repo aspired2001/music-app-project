@@ -14,11 +14,16 @@ COPY . .
 
 RUN npm run build
 
-FROM node:16
+FROM node:18.18.0
 
+# Copy necessary files from builder stage
 COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/package*.json ./
 COPY --from=builder /app/dist ./dist
+COPY --from=builder /app/prisma ./prisma
+
+# Generate Prisma client during build
+RUN npx prisma generate
 
 EXPOSE 3000
 CMD [ "npm", "run", "start:prod" ]

@@ -10,6 +10,7 @@
   "license": "UNLICENSED",
   "scripts": {
     "prebuild": "prisma generate",
+    "prestart:prod": "prisma generate",
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",
@@ -25,7 +26,7 @@
     "migrate:dev": "npx prisma migrate dev",
     "migrate:dev:create": "npx prisma migrate dev --create-only",
     "migrate:deploy": "npx prisma migrate deploy",
-    "prisma:generate": "npx prisma generate --verbose",
+    "prisma:generate": "npx prisma generate ",
     "prisma:studio": "npx prisma studio",
     "prisma:clean": "npx prisma clean && rm -rf node_modules/.prisma && rm -rf node_modules/@prisma",
     "prisma:seed": "npx prisma db seed"
