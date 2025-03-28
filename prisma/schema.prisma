@@ -17,12 +17,12 @@ model User {
 
 model Song {
   id            String    @id @default(uuid())
-  spotifyId     String    @unique  // To track unique Spotify track ID
+  spotifyId     String    @unique @default("unknown_spotify_id")  // Default value added
   title         String
   artist        String
   albumName     String?
-  duration      Int
-  spotifyUrl    String
+  duration      Int       @default(0)  // Default value added
+  spotifyUrl    String    @default("https://open.spotify.com/")  // Default value added
   previewUrl    String?
   isFavorite    Boolean   @default(false)
   user          User?     @relation(fields: [userId], references: [id])
