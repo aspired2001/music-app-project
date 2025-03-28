@@ -1,11 +1,15 @@
 {
   "name": "music-app-backend",
   "version": "0.0.1",
+  "engines": {
+    "node": ">=18.18.0"
+  },
   "description": "",
   "author": "",
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
+    "prebuild": "prisma generate",
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",
@@ -21,8 +25,9 @@
     "migrate:dev": "npx prisma migrate dev",
     "migrate:dev:create": "npx prisma migrate dev --create-only",
     "migrate:deploy": "npx prisma migrate deploy",
-    "prisma:generate": "npx prisma generate",
+    "prisma:generate": "npx prisma generate --verbose",
     "prisma:studio": "npx prisma studio",
+    "prisma:clean": "npx prisma clean && rm -rf node_modules/.prisma && rm -rf node_modules/@prisma",
     "prisma:seed": "npx prisma db seed"
   },
   "dependencies": {
@@ -43,6 +48,7 @@
     "passport-jwt": "^4.0.1",
     "passport-local": "^1.0.0",
     "pg": "^8.14.1",
+    "prisma": "^6.5.0",
     "reflect-metadata": "^0.2.2",
     "rxjs": "^7.8.1"
   },
@@ -64,7 +70,6 @@
     "globals": "^16.0.0",
     "jest": "^29.7.0",
     "prettier": "^3.4.2",
-    "prisma": "latest",
     "source-map-support": "^0.5.21",
     "supertest": "^7.0.0",
     "ts-jest": "^29.2.5",
